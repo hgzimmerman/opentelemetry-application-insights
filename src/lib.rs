@@ -125,6 +125,7 @@
 //! [exceptions]: https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/trace/semantic_conventions/exceptions.md
 #![doc(html_root_url = "https://docs.rs/opentelemetry-application-insights/0.5.0")]
 #![deny(missing_docs, unreachable_pub, missing_debug_implementations)]
+#![cfg_attr(docsrs, feature(doc_cfg))]
 #![cfg_attr(test, deny(warnings))]
 
 mod convert;

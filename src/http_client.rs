@@ -21,9 +21,8 @@ pub trait HttpClient: Debug + Send + Sync {
 }
 
 /// `HttpClient` implementation for `reqwest::Client`
-///
-/// Requires the **reqwest-client** feature.
 #[cfg(feature = "reqwest-client")]
+#[cfg_attr(docsrs, doc(cfg(feature = "reqwest-client")))]
 #[async_trait]
 impl HttpClient for reqwest::Client {
     async fn send(&self, request: Request<Vec<u8>>) -> Result<Response<Bytes>, BoxError> {
@@ -35,9 +34,8 @@ impl HttpClient for reqwest::Client {
 }
 
 /// `HttpClient` implementation for `reqwest::blocking::Client`
-///
-/// Requires the **reqwest-blocking-client** feature.
 #[cfg(feature = "reqwest-blocking-client")]
+#[cfg_attr(docsrs, doc(cfg(feature = "reqwest-blocking-client")))]
 #[async_trait]
 impl HttpClient for reqwest::blocking::Client {
     async fn send(&self, request: Request<Vec<u8>>) -> Result<Response<Bytes>, BoxError> {
@@ -49,9 +47,8 @@ impl HttpClient for reqwest::blocking::Client {
 }
 
 /// `HttpClient` implementation for `surf::Client`
-///
-/// Requires the **surf-client** feature.
-#[cfg(feature = "surf")]
+#[cfg(feature = "surf-client")]
+#[cfg_attr(docsrs, doc(cfg(feature = "surf-client")))]
 #[async_trait]
 impl HttpClient for surf::Client {
     async fn send(&self, request: Request<Vec<u8>>) -> Result<Response<Bytes>, BoxError> {
