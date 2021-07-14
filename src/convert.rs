@@ -41,6 +41,7 @@ pub(crate) fn attrs_to_properties(
     let properties_from_attrs = attributes
         .iter()
         .map(|(k, v)| (k.as_str().into(), v.into()));
+    println!("attributes: {:?}, resource: {:#?}", attributes, resource);
 
     let properties = if let Some(resource) = resource {
         properties_from_attrs
@@ -49,7 +50,7 @@ pub(crate) fn attrs_to_properties(
     } else {
         properties_from_attrs.collect()
     };
-
+    println!("properties: {:#?}", properties);
     Some(properties).filter(|x: &Properties| !x.is_empty())
 }
 
